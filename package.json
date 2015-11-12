@@ -1,0 +1,15 @@
+{
+  "name": "spiderserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js 200 5 1337"
+  },
+  "author": "Joe Pfeiffer",
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^2.0.1"
+  }
+}
