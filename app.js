@@ -27,6 +27,10 @@ http.createServer(function (req, res) {
     hitCount++;
     console.log('Hit at ' + Date() + ", Hits: " + hitCount + ", " + req.url);
     res.end(responseString);
+  } else if (req.url.indexOf('/reset') != -1) {
+    hitCount = 0;
+    console.log('Hit count reset');
+    res.end('Hit count reset');
   } else if (hitCount > maxHits) {
     console.log('maxHits exceeded');
     res.end('maxHits exceeded');
