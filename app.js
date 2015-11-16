@@ -2,7 +2,7 @@
 var http = require('http'),
     maxHits = process.argv[2] || 100,
     numberOfLinksPerPage = process.argv[3] || 4,
-    port = process.argv[4] != undefined ? parseInt(process.argv[4]) : process.env.port,
+    port = process.argv[4] != undefined ? parseInt(process.argv[4]) : process.env.PORT,
     hitCount = 0;
     
 console.log('maxHits: ', maxHits, ", numberOfLinksPerPage:", numberOfLinksPerPage);
