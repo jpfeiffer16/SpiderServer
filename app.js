@@ -19,11 +19,7 @@ require('dns').lookup(require('os').hostname(), function (err, add, fam) {
           var uuid = require('uuid').v4();
           responseString += '<a href="' + uuid + '">' + uuid + '</a>';
         } else {
-          if (Math.random() > .45) {
-            responseString += '<a href="https://othersite.com/' + uuid + '">' + uuid + '</a>';
-          } else {
-            responseString += '<a href="othersite.com/' + uuid + '">' + uuid + '</a>';
-          }
+          responseString += '<a href="https://othersite.com/' + uuid + '">' + uuid + '</a>';
         }
       }
       hitCount++;
