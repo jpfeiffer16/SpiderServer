@@ -15,8 +15,8 @@ require('dns').lookup(require('os').hostname(), function (err, add, fam) {
   
     if (hitCount <= maxHits && req.url.indexOf('favicon.ico') == -1) {
       for (var i = 0; i < numberOfLinksPerPage; i++) {
+        var uuid = require('uuid').v4();
         if (Math.random() > .2) {
-          var uuid = require('uuid').v4();
           responseString += '<a href="' + uuid + '">' + uuid + '</a>';
         } else {
           responseString += '<a href="https://othersite.com/' + uuid + '">' + uuid + '</a>';
