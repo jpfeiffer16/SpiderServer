@@ -10,6 +10,8 @@
   "author": "Joe Pfeiffer",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
     "handlebars": "^4.0.6",
     "uuid": "^2.0.1"
   }

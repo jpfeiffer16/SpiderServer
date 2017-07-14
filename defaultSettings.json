@@ -1,0 +1,8 @@
+{
+  "maxHits": "200",
+  "numberOfLinksPerPage": "5",
+  "randomizedResponseCodes" : {
+    "20": "500",
+    "80": "200"
+  }
+}
