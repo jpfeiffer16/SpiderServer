@@ -5,6 +5,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 process.settings = JSON.parse(fs.readFileSync('./defaultSettings.json', 'utf-8'));
 process.hitCount = 0;
