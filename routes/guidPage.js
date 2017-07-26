@@ -1,37 +1,49 @@
-const fs = require('fs');
-const uuid = require('uuid');
-const handlebars = require('handlebars');
+const fs = require('fs'),
+      uuid = require('uuid'),
+      handlebars = require('handlebars');
 
 module.exports = function(app) {
   app.get('/guid/:guid', function(req, res) {
     process.hitCount++;
-    console.log('Hit at ' + Date() + ", Hits: " + process.hitCount + ", " + req.url);
-    console.log(req.params.guid);
     if (process.hitCount < process.settings.maxHits) { 
       fs.readFile('pages/page.hbs', 'utf-8', function(err, text) {
         if (err) {
           res.statusCode = 500;
-          res.end();
+          logHit(req, res);
+          res.end(err);
           return;
+        }
+
+        //Apply randomized response code here if necessary
+        if (process.settings.responseCodes && process.hitCount > 20) {
+          let min = 0;
+          let max = process.settings.responseCodes.length - 1;
+          let randomIndex =  Math.floor(Math.random() * (max - min + 1) + min);
+          res.statusCode = process.settings.responseCodes[randomIndex];
         }
 
         var context = {
           pagePath: '',
-          links: []
+          links: [],
+          statusCode: res.statusCode
         };
+
         for (var i = 0; i < process.settings.numberOfLinksPerPage; i++) {
           var thisuuid = uuid.v4();
           context.links.push({ uuid: thisuuid });
         }
+
         var template = handlebars.compile(text);
+        logHit(req, res);
         res.send(template(context));
       });
     } else {
+      logHit(req, res);
       res.send('maxHits exceeded.');
     }
   });
+}
 
-  app.get('/', function(req, res) {
-    res.redirect('/guid/' + uuid.v4());
-  });
+function logHit(req, res) {
+  console.log(` > ${ process.hitCount } | ${ res.statusCode } | ${ req.url }`);
 }

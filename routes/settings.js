@@ -15,6 +15,7 @@ module.exports = function(app) {
         res.send('Unable to load view.');
         return;
       }
+      
       let context = {
         settings: JSON.stringify(process.settings)
       };

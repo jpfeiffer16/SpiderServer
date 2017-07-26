@@ -2,12 +2,17 @@
   <head>
     <title>SpiderServer</title>
   </head>
+
   <body>
+    <h3>{{statusCode}}</h3>
     {{#each links}}
-      <img src="https://dummyimage.com/600x400/4d383f/fff.png&text={{uuid}}" />
-      <br>
-      <a href="/guid/{{uuid}}">{{uuid}}</a>
-      <br>
-    {{/each}}
+      <img src="https://dummyimage.com/600x400/4d383f/fff.png&text={{uuid}}" />  
+      {{!-- <svg height="400" width="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <rect fil="4d383f" width="100%" height="100%"></rect>
+        <text font-family="helvetica" font-size="15" fill="#fff" text-anchor="middle" alignment-baseline="central" stroke="#fff">My logo</text>
+      </svg> --}}
+    <br>
+    <a href="/guid/{{uuid}}">{{uuid}}</a>
+    <br> {{/each}}
   </body>
 </html>
