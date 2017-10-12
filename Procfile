@@ -1,1 +1,1 @@
-web: npm start
+node app.js 200 5
