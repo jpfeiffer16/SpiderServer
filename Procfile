@@ -1,1 +1,1 @@
-node app.js 200 5
+web: node app.js 200 5
